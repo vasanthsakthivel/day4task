@@ -1,0 +1,206 @@
+//Do the below programs in anonymous function & IIFE
+
+
+//1.Print odd numbers in an array
+
+//anonymous:
+
+const num = [1,2,3,4,5,6,7,8,9,10];
+
+const oddnumber = num.filter(function(num) {
+    return  num % 2 !==0;
+});
+
+console.log(oddnumber);
+
+//IIFE:
+
+const num1 = [1,2,3,4,5,6,7,8,9,10];
+
+(function(arr){
+    arr.array.forEach(function(num) {
+        if (num % 2 !==0){
+            console.log(num);
+        }
+    });
+})(num1);
+
+//arrow
+
+
+const oddnum = (arr) => arr.filter(num => num % 2 !==0 );
+console.log(oddnum([1,2,3,4,5,6,7,8,9,10]));
+
+
+//2.Convert all the strings to title caps in a string array
+
+//anonymous:
+
+const caps = function(arr) {
+    return arr.map(function(str) {
+        return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+    });
+};
+console.log(caps(["hello","world"]));
+
+//IIFE:
+
+(function(arr) {
+    console.log(arr.map(function(str) {
+        return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+    }));
+})(["hello","world"]);
+
+//Arrow
+
+const tocaps = (arr) => arr.map(str => str.charAt(0).toUpperCase() + str.slice(1).toLowerCase());
+console.log(tocaps(["hello","world"]));
+
+//3.Sum of all numbers in an array
+
+// Anonymous
+
+const sum = function(arr) {
+    return arr.reduce(function(acc, num) {
+        return acc + num;
+    }, 0);
+};
+console.log(sum([1,2,3,4,5,6]));
+
+//IIFE:
+
+(function(arr){
+    console.log(arr.reduce(function(acc, num) {
+        return acc + num;
+    }, 0))
+})([1,2,3,4,5,6,7]);
+
+//arrow
+
+const Sum = (arr) => arr.reduce((acc, num) => acc + num, 0);
+console.log(Sum([1, 2, 3, 4, 5, 6]));
+
+
+//4.Return all the prime numbers in an array
+
+//anonymous
+
+const prime = function(arr) {
+    return arr.filter(function(num) {
+        if(num <= 1){
+            return false;
+        }
+        for(let i=2; i < num; i++){
+            if(num % i === 0) return false;
+        }
+        return true;
+    });
+};
+console.log(prime([1,2,3,4,5,6,7,8,9,10]));
+
+//IIFE
+
+(function(arr) {
+    console.log(arr.filter(function(num){
+        if (num <= 1) {
+            return false;
+        }
+        for( let i = 2; i < num; i++) {
+            if(num % i === 0) return false;
+        }
+        return true;
+    }));
+})([1,2,3,4,5,6,7,8,9,10]);
+
+//arrow
+
+const prime1 = (arr) => arr.filter(num => {
+    if (num <= 1) return false;
+    for (let i = 2; i < num; i++) {
+        if (num % i === 0) return false;
+    }
+    return true;
+});
+console.log(prime1([1, 2, 3, 4, 5, 7, 8]));
+
+//5.Return all the palindromes in an array
+
+//anonymous
+
+const palindrome = function(arr) {
+    return arr.filter(function(str) {
+        return str === str.split('').reverse().join('');
+    });
+};
+console.log(palindrome(["madam", "hello", "racecar", "world"]));
+
+//IIFE
+
+(function(arr) {
+    console.log(arr.filter(function(str) {
+        return str === str.split('').reverse().join('');
+    }));
+})(["madam", "hello", "racecar", "world"]);
+
+//ARROW
+
+const palindrome1 = (arr) => arr.filter(str => str === str.split('').reverse().join(''));
+console.log(palindrome1(["madam", "hello", "racecar", "world"]));
+
+// 6.Return median of two sorted arrays of the same size.
+
+//anonymous
+
+const median = function(arr1, arr2){
+    const merge = arr1.concat(arr2).sort((a,b) => a-b);
+    const mid = merge.length / 2;
+    return (merge[mid-1] + merge[mid])/2;
+};
+console.log(median([1,3,5],[2,4,6]));
+
+//IIFE
+
+(function(arr1, arr2) {
+    const merge = arr1.concat(arr2).sort((a,b) => a-b);
+    const mid = merge.length / 2;
+    console.log((merge[mid-1] + merge[mid])/2);
+})([1,3,5],[2,4,6]);
+
+//7.Remove duplicates from an array
+
+//anonymous
+
+const duplicates = function(arr){
+    return [...new Set(arr)];
+};
+console.log(duplicates([1,2,2,3,3,4,4,5,6,6]));
+
+//IIFE:
+
+(function(arr) {
+    console.log([...new Set(arr)]);
+})([1,2,2,3,3,4,4,5,6,6]);
+
+//8.Rotate an array by k times
+
+//anonymous
+
+const rotate = function(arr, k) {
+    for (let i = 0; i < k; i++){
+        arr.unshift(arr.pop());
+    }
+    return arr;
+};
+console.log(rotate([1,2,3,4,5,6], 2));
+
+//IIFE:
+
+(function(arr, k) {
+    for (let i = 0; i < k; i++){
+        arr.unshift(arr.pop());
+    }
+    console.log(arr);
+})([1,2,3,4,5,6], 2);
+
+
+
